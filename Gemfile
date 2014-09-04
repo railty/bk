@@ -42,3 +42,6 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'daemons'
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
