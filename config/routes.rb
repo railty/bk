@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  resources :documents
-
-  resources :folders
+  resources :folders do
+    member do
+      get 'create_descendants'
+      get 'cal_md5'
+    end
+  end
 
   resources :nodes
-
   resources :accounts
-  
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   # The priority is based upon order of creation: first created -> highest priority.

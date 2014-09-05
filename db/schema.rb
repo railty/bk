@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904183724) do
+ActiveRecord::Schema.define(version: 20140904202409) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -33,12 +33,15 @@ ActiveRecord::Schema.define(version: 20140904183724) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "nodes", force: true do |t|
     t.string   "name"
-    t.string   "type"
+    t.string   "type",                  default: "Node"
     t.integer  "folder_id"
+    t.datetime "mtime"
+    t.integer  "size"
+    t.string   "md5",        limit: 32
     t.datetime "created_at"
     t.datetime "updated_at"
   end
