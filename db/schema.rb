@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20140904202409) do
     t.boolean  "is_folder"
     t.integer  "parent_id"
     t.datetime "mtime"
-    t.integer  "size"
+    t.integer  "size",       limit: 8
     t.string   "md5",        limit: 32
     t.datetime "created_at"
     t.datetime "updated_at"

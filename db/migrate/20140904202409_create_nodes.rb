@@ -5,7 +5,7 @@ class CreateNodes < ActiveRecord::Migration
       t.boolean :is_folder
       t.references :parent
       t.timestamp :mtime
-      t.integer :size
+      t.integer :size, :limit => 8
       t.string :md5, :limit => 32
       t.timestamps
     end
