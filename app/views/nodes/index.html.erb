@@ -1,5 +1,6 @@
 <h1>Listing nodes</h1>
 
+<%= will_paginate @nodes %>
 <table>
   <thead>
     <tr>
@@ -11,7 +12,9 @@
     <% @nodes.each do |node| %>
       <tr>
         <td><%= link_to node.name, node %></td>
-        <td><%= link_to node.type, node %></td>
+        <td><%= link_to node_type(node), node %></td>
+        <td><%= link_to node.size, node %></td>
+        <td><%= link_to node.mtime, node %></td>
         <td><%= link_to node.md5_str, node %></td>
         <td><%= link_to 'Edit', edit_node_path(node) %></td>
         <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -19,7 +22,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @nodes %>
 <br>
 
 <%= link_to 'New Node', new_node_path %>

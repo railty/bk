@@ -4,7 +4,7 @@ class NodesController < ApplicationController
   # GET /nodes
   # GET /nodes.json
   def index
-    @nodes = Node.all
+    @nodes = Node.paginate(:page => params[:page], :per_page => 25)
   end
 
   # GET /nodes/1
@@ -24,10 +24,11 @@ class NodesController < ApplicationController
   # POST /nodes
   # POST /nodes.json
   def create
-    @node = Node.new(node_params)
+    @node = Node.create_node(node_params[:name])
 
     respond_to do |format|
       if @node.save
+        @node.delay.create_descendants
         format.html { redirect_to @node, notice: 'Node was successfully created.' }
         format.json { render :show, status: :created, location: @node }
       else

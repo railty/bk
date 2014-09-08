@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  resources :folders do
-    member do
-      get 'create_descendants'
-      get 'cal_md5'
-    end
-  end
 
   resources :nodes
   resources :accounts

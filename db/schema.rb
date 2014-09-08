@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20140904202409) do
 
   create_table "nodes", force: true do |t|
     t.string   "name"
-    t.string   "type",                  default: "Node"
-    t.integer  "folder_id"
+    t.boolean  "is_folder"
+    t.integer  "parent_id"
     t.datetime "mtime"
     t.integer  "size"
     t.string   "md5",        limit: 32
