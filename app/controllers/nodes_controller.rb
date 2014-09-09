@@ -4,12 +4,17 @@ class NodesController < ApplicationController
   # GET /nodes
   # GET /nodes.json
   def index
-    @nodes = Node.paginate(:page => params[:page], :per_page => 25)
+    if params[:digest] != nil then
+      @nodes = Node.where("md5 = ?", params[:digest]).paginate(:page => params[:page], :per_page => 25)
+    else
+      @nodes = Node.paginate(:page => params[:page], :per_page => 25)
+    end
   end
 
   # GET /nodes/1
   # GET /nodes/1.json
   def show
+    @nodes = @node.children.paginate(:page => params[:page], :per_page => 25)
   end
 
   # GET /nodes/new
@@ -62,7 +67,7 @@ class NodesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_node

@@ -88,4 +88,13 @@ class Node < ActiveRecord::Base
     #return self.md5.unpack('H*')[0]
   end
 
+  def self.top(n=25)
+    sql = "select md5, size*(count(*)-1) size from nodes group by md5 having count(*)>1 order by size desc limit #{n};"
+    result = self.connection.execute(sql)
+    mds = []
+    result.each do |r|
+      mds << {:md5=>r[0], :size=>r[1]}
+    end
+    return mds
+  end
 end

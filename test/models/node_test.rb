@@ -126,7 +126,13 @@ class NodeTest < ActiveSupport::TestCase
     assert fd_a.size == 21
     assert fd_b.size == 63    
     assert fd_c.size == 21
-
   end
 
+  test "top" do
+    fd = Node.create_node(@tr)
+    fd.create_descendants
+    mds = Node.top(5)
+    assert true
+  end
+  
 end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'home#top'
   resources :nodes
   resources :accounts
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]

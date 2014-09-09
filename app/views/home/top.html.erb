@@ -1,0 +1,8 @@
+<h1>Home</h1>
+<table>
+<tr><th>md5</th><th>size</th></tr>
+<%@mds.each do |md|%> 
+<tr><td><%= link_to md[:md5], nodes_path(:digest=>md[:md5]) %>
+<%=%></td><td><%=md[:size]%></td></tr>
+<%end%>
+<table>
