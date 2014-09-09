@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/railty/delayed_job_web.git
+  revision: 2de6afbaa686f2148cbdabc1654341b005dad862
+  specs:
+    delayed_job_web (1.0.1)
+      activerecord (> 3.0.0)
+      delayed_job (> 2.0.3)
+      sinatra (>= 1.4.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -62,10 +71,6 @@ GEM
     delayed_job_active_record (4.0.2)
       activerecord (>= 3.0, < 4.2)
       delayed_job (>= 3.0, < 4.1)
-    delayed_job_web (1.2.9)
-      activerecord (> 3.0.0)
-      delayed_job (> 2.0.3)
-      sinatra (>= 1.4.4)
     erubis (2.7.0)
     execjs (2.2.1)
     hike (1.2.3)
@@ -166,7 +171,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   daemons
   delayed_job_active_record
-  delayed_job_web
+  delayed_job_web!
   jbuilder (~> 2.0)
   jquery-rails
   mysql2

@@ -28,8 +28,12 @@ class Node < ActiveRecord::Base
   
   def create_descendants
     return if not self.is_folder
+    
+    yield 'stage 1', 0 if block_given?
     self.create_children
+    yield 'stage 2', 0 if block_given?
     self.cal_size
+    yield 'stage 3', 0 if block_given?
     self.cal_md5
   end
   

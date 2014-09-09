@@ -31,20 +31,26 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'daemons'
+gem 'delayed_job_active_record'
+gem 'will_paginate'
+
+gem 'delayed_job_web', :git => 'https://github.com/railty/delayed_job_web.git'
+#gem 'delayed_job_web', :path => '/home/sning/delayed_job_web/'
+
 group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'byebug'
+
 end
 
 group :test do
   #gem 'database_cleaner'
 end
 
-gem 'daemons'
-gem 'delayed_job_active_record'
-gem 'delayed_job_web'
+group :production do
+end
 
-gem 'will_paginate'

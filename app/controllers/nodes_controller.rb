@@ -28,7 +28,8 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save
-        @node.delay.create_descendants
+        #@node.delay.create_descendants
+        Delayed::Job.enqueue ProgressJob.new(@node, 'create_descendants')
         format.html { redirect_to @node, notice: 'Node was successfully created.' }
         format.json { render :show, status: :created, location: @node }
       else

@@ -3,7 +3,7 @@ require 'test_helper'
 class NodesControllerTest < ActionController::TestCase
   setup do
     @tr = "#{Rails.root}/test/fixtures/test_folder"
-    @node = Node.create("#{@tr}/file_a")    
+    @node = Node.create_node("#{@tr}/file_a")    
   end
 
   test "should get index" do
@@ -19,7 +19,7 @@ class NodesControllerTest < ActionController::TestCase
 
   test "should create node" do
     assert_difference('Node.count') do
-      post :create, node: {  }
+      post :create, node: {:name=>@tr}
     end
 
     assert_redirected_to node_path(assigns(:node))
